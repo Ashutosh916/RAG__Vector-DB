@@ -54,96 +54,57 @@ Answer
 
 ## 🚀 How to Use
 
-### 1️⃣ Prerequisites
+### 1️⃣ Create a `.env` File
 
-- Python 3.9+
-- Google Gemini API Key
+In the root of the project, create a file named `.env` and add your Gemini API key:
 
-Set your API key as an environment variable:
+GEMINI_API_KEY=your_api_key_here
+Make sure this file is not committed to version control.
 
-```
-export GOOGLE_API_KEY="your_gemini_api_key"
+2️⃣ Prepare the Knowledge Base
+Ensure a folder (for example, knowledge_base/) exists and contains Markdown files (.md) with the data you want to embed.
 
+You can:
 
-(Windows PowerShell)
+Use the provided sample files, or
 
-setx GOOGLE_API_KEY "your_gemini_api_key"
+Add your own Markdown files of any domain (football, notes, documentation, etc.)
 
-2️⃣ Install Dependencies
-pip install -U \
-  langchain \
-  langchain-community \
-  langchain-google-genai \
-  langchain-chroma \
-  langchain-text-splitters \
-  sentence-transformers
+3️⃣ Run the Data Embedding Script
+Run the script responsible for creating embeddings and storing them in the vector database:
 
-3️⃣ Step 1: Create the Vector Database
+bash
+Copy code
+python Data_embeddings.py
+This step will:
 
-Run the embedding script:
+Load files from the knowledge base folder
 
-python create_vector_db.py
+Split the text into chunks
 
+Convert chunks into vector embeddings
 
-This will:
+Store them persistently in the vector database
 
-Load data files
+⚠️ This step needs to be run only once, unless the data changes.
 
-Split them into chunks
+4️⃣ Run the Retriever + LLM Script
+After the vector database is created, run:
 
-Embed them into vectors
+bash
+Copy code
+python LLM_Retriever.py
+This script will:
 
-Store the vectors persistently in a local directory
+Load the existing vector database
 
-You only need to do this once, unless the data changes.
+Retrieve the most relevant chunks based on your query
 
-4️⃣ Step 2: Ask Questions Using the Retriever + LLM
+Use the Gemini LLM to answer questions strictly based on the stored data
 
-Run the QA script:
+✅ Notes
+The knowledge base folder must exist before running the embedding script.
 
-python query_with_llm.py
+You may add or modify Markdown files, but you must re-run Data_embeddings.py after doing so.
 
-
-This script:
-
-Loads the existing vector database
-
-Retrieves relevant chunks based on your question
-
-Uses Gemini to generate an answer grounded in the data
-
-🔐 Important Notes
-
-The embedding model must remain the same when creating and querying the vector database.
-
-The LLM does not access the vector database directly — it only sees retrieved content.
-
-No fine-tuning is involved; this is retrieval-based grounding.
-
-🎯 Use Cases
-
-Learning how vector embeddings work
-
-Visualizing semantic similarity in 3D space
-
-Building RAG systems
-
-Domain-specific question answering
-
-Understanding how LLMs interact with external knowledge
-
-📌 Summary
-
-This project provides a clear, hands-on implementation of:
-
-Text chunking
-
-Embedding generation
-
-Vector storage
-
-Semantic retrieval
-
-LLM-based answer generation
-
-It is designed for learning, experimentation, and visualization, not just usage.
+The same embedding model is used for both storing and retrieving data to ensure semantic consistency.
