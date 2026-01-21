@@ -62,6 +62,7 @@ GEMINI_API_KEY=your_api_key_here
 Make sure this file is not committed to version control.
 
 2️⃣ Prepare the Knowledge Base
+
 Ensure a folder (for example, knowledge_base/) exists and contains Markdown files (.md) with the data you want to embed.
 
 You can:
@@ -71,6 +72,7 @@ Use the provided sample files, or
 Add your own Markdown files of any domain (football, notes, documentation, etc.)
 
 3️⃣ Run the Data Embedding Script
+
 Run the script responsible for creating embeddings and storing them in the vector database:
 
 bash
