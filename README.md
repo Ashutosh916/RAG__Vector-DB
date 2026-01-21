@@ -75,9 +75,6 @@ Add your own Markdown files of any domain (football, notes, documentation, etc.)
 
 Run the script responsible for creating embeddings and storing them in the vector database:
 
-bash
-Copy code
-python Data_embeddings.py
 This step will:
 
 Load files from the knowledge base folder
@@ -91,11 +88,8 @@ Store them persistently in the vector database
 ⚠️ This step needs to be run only once, unless the data changes.
 
 4️⃣ Run the Retriever + LLM Script
-After the vector database is created, run:
+After the vector database is created, run the LLM retriever file.
 
-bash
-Copy code
-python LLM_Retriever.py
 This script will:
 
 Load the existing vector database
