@@ -1,6 +1,5 @@
-# RAG__Vector-DB
 
-# 📊 Data Embedder & Retrieval-Augmented QA System
+## Data Embedder & Retrieval-Augmented QA System
 
 This project demonstrates a **Retrieval-Augmented Generation (RAG)** pipeline built from scratch to understand how large language models work with **vector embeddings** instead of raw text.
 
@@ -10,7 +9,7 @@ The system is divided into two main stages:
 
 ---
 
-## 🧠 Project Overview
+## Project Overview
 
 ### 1️⃣ Data Embedding Pipeline
 - Raw text data (Markdown files) is loaded from a directory.
@@ -33,7 +32,7 @@ This ensures responses are grounded in the embedded dataset.
 
 ---
 
-## 🧩 Architecture (High Level)
+## Architecture (High Level)
 
 Text Files
 ↓
@@ -52,7 +51,7 @@ Answer
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 ### 1️⃣ Create a `.env` File
 
@@ -98,9 +97,9 @@ Retrieve the most relevant chunks based on your query
 
 Use the Gemini LLM to answer questions strictly based on the stored data
 
-✅ Notes
-The knowledge base folder must exist before running the embedding script.
+## Notes
+- The knowledge base folder must exist before running the embedding script.
 
-You may add or modify Markdown files, but you must re-run Data_embeddings.py after doing so.
+- You may add or modify Markdown files, but you must re-run Data_embeddings.py after doing so.
 
-The same embedding model is used for both storing and retrieving data to ensure semantic consistency.
+- The same embedding model is used for both storing and retrieving data to ensure semantic consistency.
